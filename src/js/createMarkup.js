@@ -1,8 +1,20 @@
 export function createGalleryCard(array) {
-   return array.map(({ webformatURL, largeImageURL, tags, likes, views, comments, downloads}) => {
-    return `
+  return array
+    .map(
+      ({
+        webformatURL,
+        largeImageURL,
+        tags,
+        likes,
+        views,
+        comments,
+        downloads,
+      }) => {
+        return `
     <li class="photo-card">
-    <img src="${webformatURL}" alt="${tags}" loading="lazy" />
+        <a href="${largeImageURL}">
+            <img src="${webformatURL}" alt="${tags}" loading="lazy"/>
+        </a>
     <div class="info">
       <p class="info-item">
         <b>Likes:${likes}</b>
@@ -17,7 +29,8 @@ export function createGalleryCard(array) {
         <b>Downloads:${downloads}</b>
       </p>
     </div>
-  </li>`
-   }).join('')
-  
+  </li>`;
+      }
+    )
+    .join('');
 }
