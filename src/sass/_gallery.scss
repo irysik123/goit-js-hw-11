@@ -61,10 +61,11 @@ button:focus,
   flex-wrap: wrap;
   gap: 60px 30px;
   margin-bottom: 60px;
+
 }
 
 .photo-card {
-  flex-basis: calc((100% - 60px) / 3);
+  width: calc((100% - 60px) / 3);
 }
 
 .info {

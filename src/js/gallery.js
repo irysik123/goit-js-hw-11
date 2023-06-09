@@ -3,6 +3,7 @@ import { PixabayAPI } from './pixabay-api';
 import { createGalleryCard } from './createMarkup';
 import SimpleLightbox from "simplelightbox";
 import "simplelightbox/dist/simple-lightbox.min.css";
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 const gallery = new SimpleLightbox('.gallery a', { captionsData: 'alt', captionDelay: 250 });
 
@@ -20,7 +21,7 @@ async function onSubmitForm(event) {
   refs.loadMoreBtn.classList.add('is-hidden');
 
   if (searchQuery === '') {
-    return alert('Запит не повинен бути пустим!');
+    return Notify.failure('Please enter "Search image" field');
   }
 
   try {
@@ -28,12 +29,10 @@ async function onSubmitForm(event) {
     const markup = createGalleryCard(response.data.hits);
 
     if (response.data.hits.length === 0) {
-      return alert(
-        `Sorry, there are no images matching your search query ${searchQuery}. Please try again.`
-      );
+        return Notify.failure(`Sorry, there are no images matching your search query ${searchQuery}. Please try again.`);
     }
 
-    alert(`Hooray! We found ${response.data.totalHits} images.`);
+    Notify.success(`Hooray! We found ${response.data.totalHits} images.`);
 
     refs.list.insertAdjacentHTML('beforeend', markup);
     gallery.refresh()
@@ -69,7 +68,7 @@ async function onLoadMoreBtn() {
     const lastPage = Math.ceil(response.data.totalHits / pixabayApi.perPage);
 
     if(lastPage === pixabayApi.page) {
-        return alert("We're sorry, but you've reached the end of search results.")
+        return Notify.warning("We're sorry, but you've reached the end of search results.")
     }
 
     refs.loadMoreBtn.classList.remove('is-hidden');

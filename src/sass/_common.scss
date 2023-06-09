@@ -1,10 +1,13 @@
 @import '~node_modules/modern-normalize/modern-normalize.css';
 
 .container {
-    width: 1440px;
+    max-width: 1440px;
     padding-left: 15px;
     padding-right: 15px;
-    margin: 0 auto;
+    margin-left: 0 auto;
+    margin-right: 0 auto;
+
+
 }
 
 img {
@@ -18,3 +21,13 @@ ul {
     margin: 0;
     padding: 0;
 }
+
+/* body {
+        overflow: auto;
+    overflow-x: hidden;
+} */
+
+/* .search-form {
+    margin-right: 0;
+    margin-left: 0;
+} */
