@@ -18,9 +18,15 @@
   
   .search-form {
     display: flex;
-    width: 600px;
+    justify-content: center;
+    /* width: 600px; */
     margin: 0 auto;
-    margin-bottom: 40px;
+
+    position: fixed;
+    top: 10px;
+    text-align: center;
+    transform: translate(37%, 0);
+
   }
   
   input {
@@ -29,6 +35,8 @@
     font-size: 18px;
     padding-left: 15px;
     border: 1px solid #303030;
+
+    width: 600px;
   }
   
   button,
@@ -61,6 +69,8 @@ button:focus,
   flex-wrap: wrap;
   gap: 60px 30px;
   margin-bottom: 60px;
+  margin-top: 40px;
+
 
 }
 
